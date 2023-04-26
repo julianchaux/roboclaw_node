@@ -141,7 +141,7 @@ class Node:
         rospy.on_shutdown(self.shutdown)
         rospy.loginfo("Connecting to roboclaw")
         dev_name = rospy.get_param("~dev", "/dev/ttyACM0")
-        baud_rate = int(rospy.get_param("~baud", "115200"))
+        baud_rate = int(rospy.get_param("~baud", "38400"))
 
         self.address = int(rospy.get_param("~address", "128"))
         if self.address > 0x87 or self.address < 0x80:
@@ -177,8 +177,8 @@ class Node:
         roboclaw.ResetEncoders(self.address)
 
         self.MAX_SPEED = float(rospy.get_param("~max_speed", "2.0"))
-        self.TICKS_PER_METER = float(rospy.get_param("~ticks_per_meter", "4342.2"))
-        self.BASE_WIDTH = float(rospy.get_param("~base_width", "0.315"))
+        self.TICKS_PER_METER = float(rospy.get_param("~ticks_per_meter", "11244"))
+        self.BASE_WIDTH = float(rospy.get_param("~base_width", "0.25"))
 
         self.encodm = EncoderOdom(self.TICKS_PER_METER, self.BASE_WIDTH)
         self.last_set_speed_time = rospy.get_rostime()
