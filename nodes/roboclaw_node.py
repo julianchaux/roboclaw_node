@@ -177,7 +177,7 @@ class Node:
         roboclaw.ResetEncoders(self.address)
 
         self.MAX_SPEED = float(rospy.get_param("~max_speed", "2.0"))
-        self.TICKS_PER_METER = float(rospy.get_param("~tick_per_meter", "4342.2"))
+        self.TICKS_PER_METER = float(rospy.get_param("~ticks_per_meter", "4342.2"))
         self.BASE_WIDTH = float(rospy.get_param("~base_width", "0.315"))
 
         self.encodm = EncoderOdom(self.TICKS_PER_METER, self.BASE_WIDTH)
@@ -229,8 +229,11 @@ class Node:
                 rospy.logdebug(e)
 
             if ('enc1' in vars()) and ('enc2' in vars()):
-                rospy.logdebug(" Encoders %d %d" % (enc1, enc2))
-                self.encodm.update_publish(enc1, enc2)
+                try:
+                    rospy.logdebug(" Encoders %d %d" % (enc1, enc2))
+                    self.encodm.update_publish(enc1, enc2)
+                except:
+                    pass
 
                 self.updater.update()
             r_time.sleep()
