@@ -1,7 +1,7 @@
 # roboclaw_node
 
 
-## 1. INSTALACIÓN DE LA LIBRERÍA. 
+## INSTALACIÓN DE LA LIBRERÍA. 
 
 La librería que se usará para el controlador de los motores usando el hardware roboclaw y que sea compatible con ROS Melodic se llama: roboclaw_ros. 
 
