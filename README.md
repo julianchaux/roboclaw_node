@@ -9,11 +9,14 @@ Abrimos la carpeta “src” de nuestro espacio de trabajo:
 
 ```
 sudo git clone https://github.com/julianchaux/roboclaw_node.git
-
-cd .. 
-
+```
+```
+cd ..
+```
+```
 rosdep install --from-paths src --ignore-src -r -y 
-
+```
+```
 catkin_make 
 ```
 
